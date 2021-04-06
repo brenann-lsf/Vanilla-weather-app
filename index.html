@@ -1,18 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    h1{
-        display: block;
-        margin: 0 auto;
-    }
-</style>
-<body>
-    <h1> Hello </h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Search</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="src/style.css" />
+    <script
+      src="https://kit.fontawesome.com/908d17a404.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-app">
+        
+        <form id = "search">
+          <input type="text" class = "input-field" id="find-city" placeholder="Type a City" autocomplete="off" autofocus = "on"/>
+          <input type="submit" class = "search-button" value="Search"/>
+        </form>
+
+        <div class="container-current-weather-row">
+          <div class="row">
+            <div class="col-sm-6">
+             
+                <div class="clearfix">
+                  <div class="float-left">
+                    <i class="far fa-snowflake"></i>
+                  </div>
+
+                  <div class="float-left">
+                    <ul>
+                      <li>Current</li>
+                      <li>
+                        <span class="current-temperature" id = "temperature">
+                          -2°C
+                          </span>
+                        
+                      </li>
+                      <li>
+                    
+                        <small class="text-muted" id= "feelsLike">Feels like -8</small>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              
+            </div>
+
+            <div class="col-sm-6">
+             
+              <ul>
+                <li>
+                  <span class="current" id = "city"> Toronto</span>
+                </li>
+                <li> 
+                  <span class ="currentDate" id = "date">
+                    Thurs., March 4th, 2021</span></li>
+                <li><span class ="currentTime"id = "time">8:15 a.m.</span></li>
+                <li><span class ="weather-description"id = "description">Snow Shower</span></li>
+                <li>
+                  <small class="text-muted" id="high_low">-1/-9</small>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          id="carouselExampleControls"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container-more-days">
+                <div class="row">
+                  <div class="container-row-1-day">
+                    <div class="day-1">
+                      <div class="col">Fri</div>
+                    </div>
+                    <div class="day-2">
+                      <div class="col">Sat</div>
+                    </div>
+                    <div class="day-3">
+                      <div class="column">Sun</div>
+                    </div>
+                    <div class="day-4">
+                      <div class="column">Mon</div>
+                    </div>
+                    <div class="day-5">
+                      <div class="column">Tues</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="container-row-2-icon">
+                    <div class="icon-1">
+                      <div class="col">
+                        <i class="fas fa-sun"></i>
+                      </div>
+                    </div>
+                    <div class="icon-2">
+                      <div class="col">
+                        <i class="fas fa-cloud"></i>
+                      </div>
+                    </div>
+                    <div class="icon-3">
+                      <div class="col">
+                        <i class="fas fa-cloud-sun"></i>
+                      </div>
+                    </div>
+                    <div class="icon-4">
+                      <div class="col">
+                        <i class="fas fa-sun"></i>
+                      </div>
+                    </div>
+                    <div class="icon-5">
+                      <div class="col">
+                        <i class="fas fa-cloud-sun-rain"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="container-row-3-temperature">
+                    <div class="temperature-1">
+                      <div class="col">1°C</div>
+                    </div>
+                    <div class="temperature-2">
+                      <div class="col">-2°C</div>
+                    </div>
+                    <div class="temperature-3">
+                      <div class="col">0°C</div>
+                    </div>
+                    <div class="temperature-4">
+                      <div class="col">6°C</div>
+                    </div>
+                    <div class="temperature-5">
+                      <div class="col">9°C</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev"
+          >
+            <span
+              class="carousel-control-prev-icon"
+              background-image:
+              url="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <button type="button" class="btn btn-outline-warning" id="currentButton">Get Current Location</button>
+      </div>
+    </div>
+  </body>
+  <script src="src/script.js"></script>
 </html>

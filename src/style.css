@@ -1,0 +1,161 @@
+.weather-app {
+  border: 1px solid #ffe05d;
+  background-image: linear-gradient(to top, #ffe05d 0%, white 100%);
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 7px 7px 7px #c5b054;;
+}
+form{
+  display: inline-block;
+  margin: 0 auto;
+
+  text-transform: uppercase;
+  font-size: 20px;
+
+}
+.input-field{
+  border: 3px solid;
+  text-align: center;
+  border-color: #ffe05d;
+  background-color: #ffff;
+  padding-left: 150px;
+  padding-right: 150px;
+  border-radius: 5px;
+  
+}
+.search-button{
+  border: 3px solid;
+  text-align: center;
+  border-color: #ffe05d;
+  background-color: #ffe05d;
+  color: #ffff;
+  border-radius: 5px;
+}
+.container-current-weather-row {
+  margin-top: 40px;
+}
+
+.col-sm-6 {
+  border: 1px solid #ff3366;
+  border-radius: 5px;
+  background-color: #ffd7c7;
+  
+  display: block;
+  margin: 0px auto;
+  margin-bottom: 50px;
+  width: 43%;
+  padding: 10px;
+}
+.clearfix {
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+.float-left {
+  float: left;
+}
+
+.fa-snowflake {
+  color: #fc8621;
+  font-size: 600%;
+}
+
+.current-temperature {
+  font-size: 50px;
+  line-height: 1;
+  margin: 0px;
+  color: #000;
+  text-align: left;
+}
+ul {
+  padding-left: 25px;
+}
+li {
+  display: block;
+}
+.current {
+  font-size: 50px;
+  line-height: 1;
+  color: #000;
+  text-transform: capitalize;
+}
+
+
+#description{
+  text-transform: capitalize;
+}
+.container-more-days {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  margin: 0px 10%;
+  
+  padding: 10px 40px 10px 40px;
+  border: solid;
+  border-color: #ff3366;
+  background-color: #ffd7c7;
+  color: #fc8621;
+  border-radius: 10px;
+}
+.carousel {
+  margin-bottom: 35px;
+}
+
+.container-row-1-day,
+.container-row-2-icon,
+.container-row-3-temperature {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 40px;
+  margin: 0px;
+  font-size: 18px;
+}
+.container-row-2-icon {
+  font-size: 300%;
+}
+.container-row-1-day,
+.container-row-3-temperature {
+  color: #ff3366;
+}
+.day-1,
+.day-2,
+.day-3,
+.day-4,
+.day-5 {
+  border: solid;
+  border-color: #ffb6b4;
+  border-radius: 5px;
+}
+.day-1,
+.day-2,
+.day-3,
+.day-4,
+.day-5,
+.icon-1,
+.icon-2,
+.icon-3,
+.icon-4,
+.icon-5,
+.temperature-1,
+.temperature-2,
+.temperature-3,
+.temperature-4,
+.temperature-5 {
+  padding: 5px 0px 5px 0px;
+  width: 100px;
+}
+
+.btn-outline-warning {
+  display: block;
+  margin: 0px auto;
+  margin-bottom: 30px;
+  color: #ff3366;
+  border-color: #ff3366;
+  background-color: #ffd7c7;
+}
+.btn-outline-warning:hover {
+  color: #ff3366;
+  background-color: #ffe05d;
+}
