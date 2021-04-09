@@ -159,3 +159,7 @@ li {
   color: #ff3366;
   background-color: #ffe05d;
 }
+.OpenSourceLink{
+  display: block;
+  margin: 0 auto;
+}
