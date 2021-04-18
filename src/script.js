@@ -1,107 +1,98 @@
-let now = new Date();
-let date = now.getDate();
-let hours = now.getHours()
-if (hours < 10) {
-  hours = `0${hours}`;
-}
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-
-let days = [
-  "Sun",
-  "Mon",
-  "Tues",
-  "Wed",
-  "Thurs",
-  "Fri",
-  "Sat"
-];
-let day = days[now.getDay()];
-
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-];
-let month = months[now.getMonth()];
-  
-  let currentDate = document.querySelector("#date");
-  currentDate.innerHTML =`${day}., ${month} ${date}`;
-  let currentTime = document.querySelector("#time");
-  currentTime.innerHTML = `${hours}:${minutes}`;
-
-
-  function changeCity(event) {
-    event.preventDefault();
-    let cityInput = document.querySelector("#find-city");
-    let cityHeading = document.querySelector("#city");
-    cityHeading.innerHTML = `${cityInput.value}`; 
+function formatDate(timestamp){
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
-  let form = document.querySelector("#search");
-  form.addEventListener("submit", changeCity);
-
-
-function showWeather(response){
-  let temperature = Math.round(response.data.main.temp);
-  let weather = document.querySelector("#temperature");
-weather.innerHTML = `${temperature}°C`;
-  let feelsLike = Math.round(response.data.main.feels_like);
-  let altWeather = document.querySelector("#feelsLike");
-altWeather.innerHTML = `Feels like ${feelsLike}`;
-  let description = (response.data.weather[0].description);
-  let altdescription = document.querySelector ("#description");
-altdescription.innerHTML = `${description}`;
-  let min = Math.round(response.data.main.temp_min);
-  let max = Math.round(response.data.main.temp_max);
-  let altHighLow = document.querySelector("#high_low");
-altHighLow.innerHTML = `${min}°/ ${max}°`;
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  let day = days[date.getDay()];
+  let month = months[date.getMonth()];
+  return `${date}`;
 }
 
 
-function searchCity(city) {
+function displayTemperature(response){
+  console.log(response.data);
+let temperatureElement = document.querySelector("#temperature");
+let cityElement=document.querySelector("#city");
+let descriptionElement=document.querySelector("#description");
+let feelsLikeElement= document.querySelector("#feelsLike");
+let minElement = document.querySelector("#min");
+let maxElement=document.querySelector("#max");
+let dateElement=document.querySelector("#date");
+let iconElement=document.querySelector("#icon");
+
+celsiusTemperature=response.data.main.temp;
+
+temperatureElement.innerHTML=Math.round(response.data.main.temp);
+cityElement.innerHTML=response.data.name;
+descriptionElement.innerHTML=response.data.weather[0].description;
+feelsLikeElement.innerHTML= `Feels like ${Math.round(response.data.main.feels_like)}°`;
+minElement.innerHTML= `${Math.round(response.data.main.temp_min)}°`;
+maxElement.innerHTML= `${Math.round(response.data.main.temp_max)}°`;
+dateElement.innerHTML= formatDate(response.data.dt*1000);
+iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+}
+  
+function search(city){
   let apiKey = "4fce99a02cfc536e13a3dc6fb2622c7d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
+  axios.get(apiUrl).then(displayTemperature);
 }
 
-function handleSubmit(event) {
+function handleSubmit(event){
   event.preventDefault();
-  let city = document.querySelector("#find-city").value;
-  searchCity(city);
+  let cityInputElement=document.querySelector(`#search-city`);
+  search(cityInputElement.value);
 }
-let searchedCity = document.querySelector("#search");
-searchedCity.addEventListener("submit", handleSubmit);
-
-
-function searchLocation(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let apiKey = "4fce99a02cfc536e13a3dc6fb2622c7d";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
-  axios.get(apiUrl).then(handleSubmit);
-}
-function getCurrentLocation(event) {
+function displayFahrenheitTemperature(event){
   event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocation);
+  let temperatureElement=document.querySelector("#temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature=(celsiusTemperature*9)/5+32;
+  temperatureElement.innerHTML= Math.round(fahrenheitTemperature);
 }
-let currentButton = document.querySelector("#currentButton");
-currentButton.addEventListener("click", getCurrentLocation);
+function displayCelsiusTemperature(event){
+  event.preventDefault();
+  let temperatureElement= document.querySelector("#temperature");
+  temperatureElement.innerHTML=Math.round(celsiusTemperature);
+}
+let celsiusTemperature = null;
 
+let form=document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
 
+let fahrenheitLink=document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
+let celsiusLink=document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-
-
-  
+search ("Toronto");

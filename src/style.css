@@ -4,8 +4,10 @@
   max-width: 700px;
   margin: 20px auto;
   padding: 15px;
+  padding-bottom: 120px;
   border-radius: 5px;
-  box-shadow: 7px 7px 7px #c5b054;;
+  box-shadow: 7px 7px 7px #c5b054;
+  font-family: Cerebri-Sans,Helvetica,Arial,sans-serif;
 }
 form{
   display: inline-block;
@@ -32,12 +34,14 @@ form{
   background-color: #ffe05d;
   color: #ffff;
   border-radius: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 .container-current-weather-row {
   margin-top: 40px;
 }
 
-.col-sm-6 {
+.col-6 {
   border: 1px solid #ff3366;
   border-radius: 5px;
   background-color: #ffd7c7;
@@ -49,17 +53,20 @@ form{
   padding: 10px;
 }
 .clearfix {
-  padding-top: 15px;
+  
   padding-left: 15px;
 }
+
 
 .float-left {
   float: left;
 }
 
-.fa-snowflake {
+#icon {
   color: #fc8621;
   font-size: 600%;
+  width: 112px;
+  height:112px;
 }
 
 .current-temperature {
@@ -80,85 +87,35 @@ li {
   line-height: 1;
   color: #000;
   text-transform: capitalize;
+ 
 }
+
 
 
 #description{
   text-transform: capitalize;
 }
-.container-more-days {
-  display: block;
-  justify-content: center;
-  text-align: center;
-  margin: 0px 10%;
-  
-  padding: 10px 40px 10px 40px;
-  border: solid;
-  border-color: #ff3366;
-  background-color: #ffd7c7;
-  color: #fc8621;
-  border-radius: 10px;
-}
-.carousel {
-  margin-bottom: 35px;
+.weather-unit{
+
+    font-size: 20px;
+    font-weight: 400;
+    position: relative;
+    line-height: 1;
+    top: -18px;
 }
 
-.container-row-1-day,
-.container-row-2-icon,
-.container-row-3-temperature {
-  display: flex;
-  flex-wrap: nowrap;
-  column-gap: 40px;
-  margin: 0px;
-  font-size: 18px;
-}
-.container-row-2-icon {
-  font-size: 300%;
-}
-.container-row-1-day,
-.container-row-3-temperature {
-  color: #ff3366;
-}
-.day-1,
-.day-2,
-.day-3,
-.day-4,
-.day-5 {
-  border: solid;
-  border-color: #ffb6b4;
-  border-radius: 5px;
-}
-.day-1,
-.day-2,
-.day-3,
-.day-4,
-.day-5,
-.icon-1,
-.icon-2,
-.icon-3,
-.icon-4,
-.icon-5,
-.temperature-1,
-.temperature-2,
-.temperature-3,
-.temperature-4,
-.temperature-5 {
-  padding: 5px 0px 5px 0px;
-  width: 100px;
+#fahrenheit-link{
+  text-decoration: none;
 }
 
-.btn-outline-warning {
-  display: block;
-  margin: 0px auto;
-  margin-bottom: 30px;
-  color: #ff3366;
-  border-color: #ff3366;
-  background-color: #ffd7c7;
+.active{
+  text-decoration: none;
+  cursor: default;
+  color: #000;
 }
-.btn-outline-warning:hover {
-  color: #ff3366;
-  background-color: #ffe05d;
-}
+
+
+
 .OpenSourceLink{
   display: block;
   margin: 0 auto;
