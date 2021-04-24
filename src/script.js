@@ -62,7 +62,12 @@ forecastHTML=forecastHTML+`</div>`;
 forecastElement.innerHTML=forecastHTML;
 console.log(forecastHTML);
 }
-
+function getForecast(coordinates){
+  console.log(coordinates);
+  let apiKey="4fce99a02cfc536e13a3dc6fb2622c7d"
+  let apiUrl=`http://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayForecast);
+}
 
 
 function displayTemperature(response){
@@ -86,6 +91,9 @@ minElement.innerHTML= `${Math.round(response.data.main.temp_min)}°`;
 maxElement.innerHTML= `${Math.round(response.data.main.temp_max)}°`;
 dateElement.innerHTML= formatDate(response.data.dt*1000);
 iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+getForecast(response.data.coord);
+
 }
   
 function search(city){
@@ -124,4 +132,4 @@ let celsiusLink=document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search ("Toronto");
-displayForecast();
+
