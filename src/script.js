@@ -33,7 +33,7 @@ function formatDate(timestamp){
   ];
   let day = days[date.getDay()];
   let month = months[date.getMonth()];
-  return `${date}`;
+  return `${day}, ${month} ${date}`;
 }
 
 function formatDay(timestamp){
@@ -53,12 +53,12 @@ forecast.forEach(function(forecastDay, index){
   forecastHTML=
   forecastHTML+
   `
-    <div class="col-2">
-      <div class="weather-forecast=date">
+    <div class="col-sm">
+      <div class="weather-forecast-date">
       ${formatDay(forecastDay.dt)}
         </div>
       
-       <img
+       <img class="icon-image"
            src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="42"/>
           <div class="weather-forecast-temperatures">
             <span class="weather-forecast-temperature-max">${Math.round(forecastDay.temp.max)}°</span>
