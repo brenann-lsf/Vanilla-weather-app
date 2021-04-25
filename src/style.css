@@ -9,14 +9,14 @@
   box-shadow: 7px 7px 7px #c5b054;
   font-family: Cerebri-Sans,Helvetica,Arial,sans-serif;
 }
+
 form{
   display: inline-block;
   margin: 0 auto;
-
   text-transform: uppercase;
   font-size: 20px;
-
 }
+
 .input-field{
   border: 3px solid;
   text-align: center;
@@ -25,8 +25,8 @@ form{
   padding-left: 150px;
   padding-right: 150px;
   border-radius: 5px;
-  
 }
+
 .search-button{
   border: 3px solid;
   text-align: center;
@@ -37,10 +37,12 @@ form{
   padding-right: 15px;
   padding-left: 15px;
 }
+
 .search-button:hover {
   color: #ec6e4c;
   background-color: #ffece8;
 }
+
 .container-current-weather-row {
   margin-top: 40px;
 }
@@ -57,10 +59,8 @@ form{
   padding: 10px;
 }
 .clearfix {
-  
   padding-left: 15px;
 }
-
 
 .float-left {
   float: left;
@@ -73,7 +73,6 @@ form{
   height:112px;
 }
 
-
 .current-temperature {
   font-size: 50px;
   line-height: 1;
@@ -81,29 +80,34 @@ form{
   color: #000;;
   text-align: left;
 }
+
 ul {
   padding-left: 25px;
 }
+
 li {
   display: block;
 }
+
 .current {
   font-size: 50px;
   line-height: 1;
   color: #000;
   text-transform: capitalize;
- 
 }
+.unit{
+  font-size: 30px;
+}
+
 .text-muted{
   color: #000;
 }
 
-
 #description{
   text-transform: capitalize;
 }
-.weather-unit{
 
+.weather-unit{
     font-size: 20px;
     font-weight: 400;
     position: relative;
@@ -111,41 +115,35 @@ li {
     top: -18px;
 }
 
-#fahrenheit-link{
-  text-decoration: none;
-}
-
-.active{
-  text-decoration: none;
-  cursor: default;
-  color: #000;
-}
 .weather-forecast{
   display: block;
   margin:0 auto;
   text-align: center;
   color: #ec6e4c;
-
 }
+
 .weather-forecast-date{
   font-size: 20px;
   font-weight: 600;
 }
+
 .icon-image{
   font-size: 300%;
   width: 112px;
-  height:112px;
-  
+  height:112px; 
 }
+
 .weather-forecast-temperature-max{
   font-size: 18px;
   font-weight: 600;
 }
+
 .weather-forecast-temperature-min{
   font-size: 15px;
   font-weight: 300;
   color: #f78869;
 }
+
 .OpenSourceLink{
   display: block;
   margin: 0 auto;

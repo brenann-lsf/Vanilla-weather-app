@@ -33,7 +33,8 @@ function formatDate(timestamp){
   ];
   let day = days[date.getDay()];
   let month = months[date.getMonth()];
-  return `${day}, ${month} ${date}`;
+  return `${day}, ${month} ${date}
+  ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp){
@@ -65,7 +66,6 @@ forecast.forEach(function(forecastDay, index){
             <span class="weather-forecast-temperature-min">${Math.round(forecastDay.temp.min)}°</span>
           </div>
       </div>
-
 `;
 }
 });
@@ -73,6 +73,7 @@ forecastHTML=forecastHTML+`</div>`;
 forecastElement.innerHTML=forecastHTML;
 console.log(forecastHTML);
 }
+
 function getForecast(coordinates){
   console.log(coordinates);
   let apiKey="4fce99a02cfc536e13a3dc6fb2622c7d"
@@ -104,7 +105,6 @@ dateElement.innerHTML= formatDate(response.data.dt*1000);
 iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
 getForecast(response.data.coord);
-
 }
   
 function search(city){
@@ -118,29 +118,12 @@ function handleSubmit(event){
   let cityInputElement=document.querySelector(`#search-city`);
   search(cityInputElement.value);
 }
-function displayFahrenheitTemperature(event){
-  event.preventDefault();
-  let temperatureElement=document.querySelector("#temperature");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature=(celsiusTemperature*9)/5+32;
-  temperatureElement.innerHTML= Math.round(fahrenheitTemperature);
-}
-function displayCelsiusTemperature(event){
-  event.preventDefault();
-  let temperatureElement= document.querySelector("#temperature");
-  temperatureElement.innerHTML=Math.round(celsiusTemperature);
-}
+
 let celsiusTemperature = null;
 
 let form=document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-let fahrenheitLink=document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusLink=document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search ("Toronto");
 
