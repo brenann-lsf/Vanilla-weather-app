@@ -33,8 +33,8 @@ function formatDate(timestamp){
   ];
   let day = days[date.getDay()];
   let month = months[date.getMonth()];
-  return `${day}, ${month} ${date}
-  ${hours}:${minutes}`;
+  return `${day}, ${month} ${date.getDate()}<br>
+  ${hours}:${minutes}`
 }
 
 function formatDay(timestamp){

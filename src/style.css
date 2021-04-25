@@ -95,6 +95,15 @@ li {
   color: #000;
   text-transform: capitalize;
 }
+
+.currentDate, .weather-description{
+  font-size: 20px;
+}
+
+.weather-description{
+  font-size: 18px;
+} 
+
 .unit{
   font-size: 30px;
 }
